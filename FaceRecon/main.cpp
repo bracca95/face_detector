@@ -3,14 +3,15 @@
 //  FaceRecon
 //
 
-#include "extFoo.hpp"
+//#include "extFoo.hpp"
+#include "VidMan.hpp"
 
 // header
 void printUsage ();
 
 int main(int argc, const char * argv[]) {
     
-    /* PARSER */
+    /* PARSER
     const char* keys = {
         "{help h|     | show help message}"
         "{c     |     | path of cascades}"
@@ -31,6 +32,11 @@ int main(int argc, const char * argv[]) {
     // main operation: use either camera or videoFullPath, depending on the application
     VideoCapture cap;
     detectAndDisplay(cap, video);
+     */
+    
+    CascFiles casc = CascFiles("/Users/bracca/Programmi/opencv-3.4.3/data/haarcascades/");
+    VidMan vidman = VidMan("Camera", casc);
+    vidman.playVideo();
     
     return 0;
 }
