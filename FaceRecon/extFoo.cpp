@@ -8,7 +8,7 @@
 /* global variables */
 
 // cascades paths
-string pathToCascadesDir = "/Users/bracca/Programmi/opencv-3.4.3/data/haarcascades/";
+string pathToCascadesDir = "path/to/cascade/dir";
 string face_cascade_name = "haarcascade_frontalface_alt.xml";
 string eyes_cascade_name = "haarcascade_eye_tree_eyeglasses.xml";
 string profile_cascade_name = "haarcascade_profileface.xml";
@@ -25,7 +25,6 @@ RNG rng(12345);                         // random number generator
 
 // name used for the window
 string window = "Video";
-
 
 /* functions definition */
 void detectAndDisplay (VideoCapture stapleVideo, string fullPath) {
@@ -134,7 +133,7 @@ VideoCapture openVideo (string fullPath) {
     VideoCapture stapleVideo;
     
     // try to open video reference, specify "Camera" in the path if you want that
-    if (fullPath != "Camera") {
+    if (fullPath != "") {
         stapleVideo.open(fullPath);
     } else {
         stapleVideo.open(0);
