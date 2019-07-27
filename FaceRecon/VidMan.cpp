@@ -33,7 +33,7 @@ void VidMan::playVideo() {
     CascadeClassifier profileCasc = casc.getCascade(2);
     
     // try to open video reference
-    if (fullPath == "Camera")
+    if (fullPath == "")
         baseVideo.open(0);
     else
         baseVideo.open(fullPath);
@@ -76,15 +76,15 @@ void VidMan::playVideo() {
     return;
 }
 
-void VidMan::plotHaar(CascadeClassifier faceCasc, CascadeClassifier eyesCasc, CascadeClassifier profileCasc) {
+void VidMan::plotHaar(CascadeClassifier _faceCasc, CascadeClassifier _eyesCasc, CascadeClassifier _profileCasc) {
     
     // conversion to make the cascade detection work
     cvtColor (frame, frame_gray, CV_BGR2GRAY);
     equalizeHist (frame_gray, frame_gray);
     
     // Detect faces (vector with n possible faces in the video)
-    faceCasc.detectMultiScale(frame_gray, faces, 1.1, 2, 0|CV_HAAR_SCALE_IMAGE, Size(30, 30));
-    profileCasc.detectMultiScale(frame_gray, profiles, 1.1, 2, 0|CV_HAAR_SCALE_IMAGE, Size(30, 30));
+    _faceCasc.detectMultiScale(frame_gray, faces, 1.1, 2, 0|CV_HAAR_SCALE_IMAGE, Size(30, 30));
+    _profileCasc.detectMultiScale(frame_gray, profiles, 1.1, 2, 0|CV_HAAR_SCALE_IMAGE, Size(30, 30));
     
     // draw circle that identifies the face for every one seen
     for(size_t i = 0; i < faces.size(); i++) {
@@ -93,7 +93,7 @@ void VidMan::plotHaar(CascadeClassifier faceCasc, CascadeClassifier eyesCasc, Ca
         
         // put the i-th face in a matrix, so that you can identify eyes on it
         Mat faceROI = frame_gray(faces[i]);
-        eyesCasc.detectMultiScale(faceROI, eyes, 1.1, 2, 0 |CV_HAAR_SCALE_IMAGE, Size(30, 30));
+        _eyesCasc.detectMultiScale(faceROI, eyes, 1.1, 2, 0 |CV_HAAR_SCALE_IMAGE, Size(30, 30));
         
         // draw eyes circle
         for(size_t j = 0; j < eyes.size(); j++) {

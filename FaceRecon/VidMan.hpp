@@ -32,7 +32,7 @@ public:
     
     // methods
     void playVideo();
-    void plotHaar(CascadeClassifier faceCasc, CascadeClassifier eyesCasc, CascadeClassifier profileCasc);
+    void plotHaar(CascadeClassifier _faceCasc, CascadeClassifier _eyesCasc, CascadeClassifier _profileCasc);
     
 };
 
