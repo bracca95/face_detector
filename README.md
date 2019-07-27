@@ -1,4 +1,4 @@
-
+﻿
 # Face recognition using Haar Cascade
 
 The program is based on the Haar Cascade algorithm[1] and it can detect faces either directly on a live video, streamed by the PC camera, or retrieve the information from a stored file.
@@ -20,9 +20,12 @@ Customizations might be required to compile properly.
 # 4) Usage
 A directory called `build` will appear after building. Open a terminal in the location of the executable and run:
 
-    ./target
+    ./target -h
 
-The program will open your PC camera and detect you face.
+to print the usage on screen. Basically, you can specify two arguments: 
+
+ - `-c` specifies the path of the dir containing `.xml` cascades; 
+ - `-v` to specify the path where your video is. If omitted, your PC camera is opened.
 
 License
 ----
